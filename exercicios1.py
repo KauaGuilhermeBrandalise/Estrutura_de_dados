@@ -19,21 +19,3 @@ def filtrar_pares(numeros):
 lista_inteiros = [1, 3, 5, 6, 8, 12, 2, 4]
 resultado = filtrar_pares(lista_inteiros)
 print(resultado)
-
-"""####EXERCICIO 2"""
-
-def conta_str(palavra):
-    contagem = {}
-    for caractere in palavra:
-        if caractere in contagem:
-            contagem[caractere] += 1
-        else:
-            contagem[caractere] = 1
-    return contagem
-
-texto = "laranja"
-resultado = conta_str(texto)
-print (resultado)
-
-"""####EXERCICIO 3"""
-

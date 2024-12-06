@@ -2,21 +2,21 @@ import heapq
 
 class Grafo:
     def __init__(self):
-        self.adjacencia = {}
+        self.dicionario = {}
 
     def adicionar_vertice(self, vertice):
-        if vertice not in self.adjacencia:
-            self.adjacencia[vertice] = []
+        if vertice not in self.dicionario:
+            self.dicionario[vertice] = []
         else:
             print(f"Vertice {vertice} já existe.")
 
     def adicionar_aresta(self, vertice1, vertice2, peso):
-        if vertice1 in self.adjacencia and vertice2 in self.adjacencia:
-            self.adjacencia[vertice1].append((vertice2, peso))
-            self.adjacencia[vertice2].append((vertice1, peso))  
+        if vertice1 in self.dicionario and vertice2 in self.dicionario:
+            self.dicionario[vertice1].append((vertice2, peso))
+            self.dicionario[vertice2].append((vertice1, peso))  
 
     def dijkstra(self, origem):
-        distancias = {vertice: float('inf') for vertice in self.adjacencia}
+        distancias = {vertice: float('inf') for vertice in self.dicionario}
         distancias[origem] = 0
         prioridade = [(0, origem)]  
         visitados = set()
@@ -28,7 +28,7 @@ class Grafo:
                 continue
             visitados.add(vertice_atual)
 
-            for vizinho, peso in self.adjacencia[vertice_atual]:
+            for vizinho, peso in self.dicionario[vertice_atual]:
                 distancia = distancia_atual + peso
 
                 if distancia < distancias[vizinho]:
@@ -38,7 +38,7 @@ class Grafo:
         return distancias
 
     def mostrar_grafo(self):
-        for vertice, arestas in self.adjacencia.items():
+        for vertice, arestas in self.dicionario.items():
             print(f"{vertice} -> {', '.join(f'{vizinho}({peso})' for vizinho, peso in arestas)}")
 
 
